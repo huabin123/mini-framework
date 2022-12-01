@@ -26,3 +26,8 @@ bean容器作为BeanDefinitionRegistry和SingletonBeanRegistry的实现类，具
 
 在BeanDefinition中增加bean属性对应的PropertyValues,实例化bean之后，为bean填充属性。
 (AbstractAutowireCapableBeanFactory#applyPropertyValues)。
+
+## 为Bean注入Bean
+> package:populatebeanwithbean
+
+增加BeanReference类，包装一个bean对另一个bean的引用。实例化beanA后填充属性时，若PropertyValue#value为BeanReference，引用beanB，则先去实例化beanB。 由于不想增加代码的复杂度提高理解难度，暂时不支持循环依赖，后面会解决该问题。

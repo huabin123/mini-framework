@@ -1,5 +1,7 @@
 package populatebeanwithpropertyvalues.bean;
 
+import populatebeanwithbean.bean.Car;
+
 /**
  * @Author huabin
  * @DateTime 2022-11-30 15:16
@@ -10,6 +12,8 @@ public class Person {
     private String name;
 
     private String age;
+
+    private Car car;
 
     public String getName() {
         return name;
@@ -25,6 +29,14 @@ public class Person {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
     @Override
