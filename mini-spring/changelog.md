@@ -35,4 +35,7 @@ bean容器作为BeanDefinitionRegistry和SingletonBeanRegistry的实现类，具
 ## 资源和资源加载器
 > package:resourceandresourceloader
 
+## 在xml文件中定义bean
+> package:xmlfiledefinebean
 
+XmlBeanDefinitionReader实现BeanDefinitionReader接口，对xml中的bean信息进行解析
