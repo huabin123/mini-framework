@@ -1,4 +1,4 @@
-package beanfactorypostprocessorandbeanpostprocessor.beans;
+package applicationcontext.beans;
 
 import cn.hutool.core.util.StrUtil;
 

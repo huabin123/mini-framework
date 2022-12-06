@@ -60,5 +60,19 @@ BeanPostProcessor也是spring提供的容器扩展机制，不同于BeanFactoryP
 BeanPostProcessor的两个方法分别在bean执行初始化方法（后面实现）之前和之后执行。   
 单元测试类：BeanFactoryPostProcessorAndBeanPostProcessorTest#testBeanPostProcessor和AbstractAutowireCapableBeanFactory#initializeBean方法
 
+## 应用上下文ApplicationContext
+> package:applicationcontext
+
+应用上下文ApplicationContext是spring中较之于BeanFactory更为先进的IOC容器，ApplicationContext除了拥有BeanFactory的全部功能之外，还
+支持特殊类型bean，如上一节中的BeanFactoryBeanPostProcessor和BeanPostProcessor，能对他们进行自动识别，资源加载，容器事件和监听器，国际化
+支持、单例bean自动初始化等。
+
+BeanFactory是spring的基础设施，面相spring本省；ApplicationContext面相的是spring的使用者，在一般的应用中都是使用ApplicationContext。
+
+具体实现查看AbstractApplicationContext#refresh方法即可。注意BeanFactoryPostProcessor和BeanPostProcessor的自定识别，这样就可以在xml文件中配置二者而不需要像上一节一样手动添加到容器中了。
+
+从bean的角度看，目前的生命周期如下：
+
+![](./assets/application-context-life-cycle.png)
 
 
