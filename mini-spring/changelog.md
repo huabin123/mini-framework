@@ -111,3 +111,15 @@ Aware是感知、意识的意思，Aware接口是标记性接口，其实现子�
 至止，bean的生命周期如下：
 
 ![](./assets/aware-interface.png)
+
+## bean作用域，增加prototype的支持
+> package:prototypebean
+
+每次向容器中获取prototype类型的bean时，容器都会创建一个新的实例。需要做以下改造：
+- 在BeanDefinition中增加bean的作用域的字段scope
+- 创建prototype类型的bean时，不往singletonObjects中增加该bean，参见：AbstractAutowireCapableBeanFactory#doCreateBean
+- prototype作用域bean不执行销毁方法，参见：AbstractAutowireCapableBeanFactory#registerDisposableBeanIfNecessary方法
+
+至此bean生命周期如下：
+
+![](./assets/prototype-bean.png)
