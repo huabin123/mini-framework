@@ -119,6 +119,7 @@ Aware是感知、意识的意思，Aware接口是标记性接口，其实现子�
 - 在BeanDefinition中增加bean的作用域的字段scope
 - 创建prototype类型的bean时，不往singletonObjects中增加该bean，参见：AbstractAutowireCapableBeanFactory#doCreateBean
 - prototype作用域bean不执行销毁方法，参见：AbstractAutowireCapableBeanFactory#registerDisposableBeanIfNecessary方法
+- XmlBeanDefinitionReader中解析xml中的scope属性
 
 至此bean生命周期如下：
 
