@@ -124,3 +124,8 @@ Aware是感知、意识的意思，Aware接口是标记性接口，其实现子�
 至此bean生命周期如下：
 
 ![](./assets/prototype-bean.png)
+
+## FactoryBean
+> package:factorybean
+
+
