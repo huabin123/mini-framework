@@ -3,6 +3,7 @@ package awareinterface.context.support;
 import awareinterface.beans.factory.ConfigurableListableBeanFactory;
 import awareinterface.beans.factory.config.BeanFactoryPostProcessor;
 import awareinterface.beans.factory.config.BeanPostProcessor;
+import awareinterface.context.ApplicationContextAware;
 import awareinterface.context.ConfigurableApplicationContext;
 import awareinterface.core.io.DefaultResourceLoader;
 
@@ -21,6 +22,9 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
         // 创建BeanFactory，并加载BeanDefinition
         refreshBeanFactory();
         ConfigurableListableBeanFactory beanFactory = getBeanFactory();
+
+        // 添加ApplicationContextAwareProcessor，让继承自ApplicationContextAwareProcessor的bean能感知bean
+        beanFactory.addBeanPostProcessor(new ApplicationContextAwareProcessor(this));
 
         // 在bean实例化之前，执行BeanFactoryPostProcessor
         invokeBeanFactoryPostProcessor(beanFactory);

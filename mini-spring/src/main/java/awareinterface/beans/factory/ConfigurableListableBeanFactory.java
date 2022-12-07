@@ -6,7 +6,7 @@ import awareinterface.beans.factory.config.BeanDefinition;
 import awareinterface.beans.factory.config.BeanPostProcessor;
 import awareinterface.beans.factory.config.ConfigurableBeanFactory;
 
-public interface ConfigurableListableBeanFactory  extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
+public interface ConfigurableListableBeanFactory extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
 
     /**
      * 根据名称查找BeanDefinition

@@ -20,6 +20,6 @@ public interface BeanDefinitionRegistry {
      * @param beanName
      * @return
      */
-    boolean containBeanDefinition(String beanName);
+    boolean containsBeanDefinition(String beanName);
 
 }

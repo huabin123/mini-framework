@@ -2,6 +2,7 @@ package awareinterface.beans.factory.support;
 
 import awareinterface.beans.BeansException;
 import awareinterface.beans.PropertyValue;
+import awareinterface.beans.factory.BeanFactoryAware;
 import awareinterface.beans.factory.DisposableBean;
 import awareinterface.beans.factory.config.AutowireCapableBeanFactory;
 import awareinterface.beans.factory.config.BeanDefinition;
@@ -91,6 +92,10 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
     }
 
     protected Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) {
+        if(bean instanceof BeanFactoryAware){
+            ((BeanFactoryAware)bean).setBeanFactory(this);
+        }
+
         // 执行BeanPostProcessor的前置处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 
