@@ -75,4 +75,24 @@ BeanFactory是spring的基础设施，面相spring本省；ApplicationContext面
 
 ![](./assets/application-context-life-cycle.png)
 
+## bean的初始化和销毁方法
+> package:initanddestroymethod
 
+在spring中，定义bean的初始化和销毁方法有三种方法：
+- 在xml文件中制定init-method和destroy-method
+- 继承自InitializingBean和DisposableBean
+- 在方法上加注解PostConstruct和PreDestroy
+
+第三种通过BeanPostProcessor实现，在后续实现，本节只实现前两种。
+
+针对第一种在xml文件中指定初始化和销毁方法的方式，在BeanDefinition中增加属性initMethodName和destroyMethodName。  
+
+初始化方法在AbstractAutowireCapableBeanFactory#invokeInitMethods执行。DefaultSingletonBeanRegistry中增加属性disposableBeans
+保存拥有销毁方法的bean，拥有销毁方法的bean在AbstractAutowireCapableBeanFactory#registerDisposableBeanIfNecessary中注册到disposableBeans中。
+
+为了确保销毁方法虚拟机关闭之前执行，向虚拟机中注册一个钩子方法，查看AbstractApplicationContext#registerShutdownHook（非web应用需要手动
+调用该方法）。当然也可以手动调用ApplicationContext#close方法关闭容器。
+
+到此为止Bean的声明周期如下：
+
+![](./assets/init-and-destroy-method.png)
