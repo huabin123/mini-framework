@@ -1,7 +1,8 @@
-package initanddestroymethod.bean;
+package awareinterface.bean;
 
-import initanddestroymethod.beans.factory.DisposableBean;
-import initanddestroymethod.beans.factory.InitializingBean;
+import awareinterface.bean.Car;
+import awareinterface.beans.factory.DisposableBean;
+import awareinterface.beans.factory.InitializingBean;
 
 /**
  * @author derekyi

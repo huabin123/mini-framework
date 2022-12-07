@@ -96,3 +96,7 @@ BeanFactory是spring的基础设施，面相spring本省；ApplicationContext面
 到此为止Bean的声明周期如下：
 
 ![](./assets/init-and-destroy-method.png)
+
+## Aware接口
+> package:awareinterface
+
