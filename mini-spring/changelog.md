@@ -144,4 +144,8 @@ ApplicationEventMulticaster接口是注册监听器和发布事件的抽象接�
 
 在AbstractApplicationContext#doClose方法中，发布容器关闭事件ContextClosedEvent。
 
+# AOP
+## 切点表达式
+> package:pointcutexpression
+
 
