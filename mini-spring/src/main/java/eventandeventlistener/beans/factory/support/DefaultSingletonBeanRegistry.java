@@ -19,7 +19,7 @@ public class DefaultSingletonBeanRegistry implements SingletonBeanRegistry {
 
     private final Map<String, DisposableBean> disposableBeans = new HashMap<>();
 
-    protected void addSingleton(String name, Object singletonObject) {
+    public void addSingleton(String name, Object singletonObject) {
         singletonObjects.put(name, singletonObject);
     }
 
