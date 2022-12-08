@@ -1,15 +1,20 @@
 package factorybean.beans.factory.support;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.StrUtil;
 import factorybean.beans.BeansException;
 import factorybean.beans.PropertyValue;
 import factorybean.beans.factory.BeanFactoryAware;
 import factorybean.beans.factory.DisposableBean;
+import factorybean.beans.factory.InitializingBean;
 import factorybean.beans.factory.config.AutowireCapableBeanFactory;
 import factorybean.beans.factory.config.BeanDefinition;
 import factorybean.beans.factory.config.BeanPostProcessor;
 import factorybean.beans.factory.config.BeanReference;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @Author huabin
@@ -96,7 +101,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         return instantiationStrategy;
     }
 
-    protected Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) {
+    protected Object initializeBean(String beanName, Object bean, BeanDefinition beanDefinition) throws InvocationTargetException, IllegalAccessException {
         if(bean instanceof BeanFactoryAware){
             ((BeanFactoryAware)bean).setBeanFactory(this);
         }
@@ -104,7 +109,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         // 执行BeanPostProcessor的前置处理
         Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
 
-        //TODO 后面会在此处执行bean的初始化方法
+        // 执行bean的初始化方法
         invokeInitMethods(beanName, wrappedBean, beanDefinition);
 
         //执行BeanPostProcessor的后置处理
@@ -135,9 +140,18 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
      * @param beanDefinition
      * @throws Throwable
      */
-    protected void invokeInitMethods(String beanName, Object bean, BeanDefinition beanDefinition) {
-        //TODO 后面会实现
-        System.out.println("执行bean[" + beanName + "]的初始化方法");
+    protected void invokeInitMethods(String beanName, Object bean, BeanDefinition beanDefinition) throws InvocationTargetException, IllegalAccessException {
+        if (bean instanceof InitializingBean) {
+            ((InitializingBean) bean).afterPropertiesSet();
+        }
+        String initMethodName = beanDefinition.getInitMethodName();
+        if (StrUtil.isNotEmpty(initMethodName)) {
+            Method initMethod = ClassUtil.getPublicMethod(beanDefinition.getBeanClass(), initMethodName);
+            if (initMethod == null) {
+                throw new BeansException("Could not find an init method named '" + initMethodName + "' on bean with name '" + beanName + "'");
+            }
+            initMethod.invoke(bean);
+        }
     }
 
     @Override
