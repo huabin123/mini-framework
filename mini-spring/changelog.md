@@ -156,7 +156,9 @@ JointPoint，织入点，指需要进行代理操作的某个类的某个方法�
 ## 基于JDK的动态代理
 > package:jdkdynamicproxy
 
+AopProxy是获取代理对象的抽象接口，JdkDynamicAopProxy是基于JDK动态代理的具体实现。TargetSource，被代理对象的封装。
 
+MethodInterceptor，方法拦截器，是AOP Alliance的"公民"，顾名思义，可以拦截方法，可在被代理执行的方法前后增加代理行为。
 
 
 
