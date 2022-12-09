@@ -163,7 +163,8 @@ MethodInterceptor，方法拦截器，是AOP Alliance的"公民"，顾名思义�
 ## 基于CGLIB的动态代理
 > package:cglibdynamicproxy
 
-
+基于CGLIB的动态代理实现逻辑也比较简单，查看CglibAopProxy。与基于JDK的动态代理在运行期间为接口生成对象的代理对象不同，基于CGLIB的动态代理能
+在运行期间动态构建字节码的class文件，为类生成子类，因此被代理类不需要继承自任何接口。
 
 
 
