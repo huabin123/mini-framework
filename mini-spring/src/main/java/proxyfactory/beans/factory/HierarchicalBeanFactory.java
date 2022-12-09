@@ -1,0 +1,4 @@
+package proxyfactory.beans.factory;
+
+public interface HierarchicalBeanFactory extends BeanFactory {
+}
