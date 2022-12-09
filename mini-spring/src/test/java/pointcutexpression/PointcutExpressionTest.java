@@ -1,6 +1,12 @@
 package pointcutexpression;
 
 import org.junit.Test;
+import pointcutexpression.aop.aspectj.AspectJExpressionPointCut;
+import pointcutexpression.service.HelloService;
+
+import java.lang.reflect.Method;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @Author huabin
@@ -9,7 +15,14 @@ import org.junit.Test;
  */
 public class PointcutExpressionTest {
     @Test
-    public void testPointcutExpression(){
+    public void testPointcutExpression() throws NoSuchMethodException {
+        AspectJExpressionPointCut pointcut = new AspectJExpressionPointCut("execution(* pointcutexpression.service.HelloService.*(..))");
+        Class<HelloService> clazz = HelloService.class;
+
+        Method method = clazz.getDeclaredMethod("sayHello");
+
+        assertThat(pointcut.matches(clazz)).isTrue();
+        assertThat(pointcut.matches(method, clazz)).isTrue();
 
     }
 }

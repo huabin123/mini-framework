@@ -148,4 +148,28 @@ ApplicationEventMulticaster接口是注册监听器和发布事件的抽象接�
 ## 切点表达式
 > package:pointcutexpression
 
+JointPoint，织入点，指需要进行代理操作的某个类的某个方法（仅支持方法级别的JointPoint）。Pointcut是JoinPoint的表述方式，能捕获JoinPoint。
+
+最常用的切点表达式是AspectJ的切点表达式。需要匹配类，定义ClassFilter接口；匹配方法，定义MethodMatcher方法，AspectJExpressionPointcut是
+支持AspectJ切点表达式的PointCut实现，简单实现仅支持execution函数。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
