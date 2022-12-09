@@ -12,11 +12,11 @@ import java.lang.reflect.Method;
  * @DateTime 2022-12-09 14:20
  * @Desc
  */
-public class CglibDynamicProxy implements AopProxy {
+public class CglibAopProxy implements AopProxy {
 
     private final AdvisedSupport advised;
 
-    public CglibDynamicProxy(AdvisedSupport advised) {
+    public CglibAopProxy(AdvisedSupport advised) {
         this.advised = advised;
     }
 

@@ -12,11 +12,11 @@ import java.lang.reflect.Proxy;
  * @DateTime 2022-12-09 13:31
  * @Desc
  */
-public class JdkDynamicProxy implements AopProxy, InvocationHandler {
+public class JdkDynamicAopProxy implements AopProxy, InvocationHandler {
 
     private final AdvisedSupport advised;
 
-    public JdkDynamicProxy(AdvisedSupport advisedSupport) {
+    public JdkDynamicAopProxy(AdvisedSupport advisedSupport) {
         this.advised = advisedSupport;
     }
 

@@ -16,7 +16,7 @@ import org.junit.Test;
  * @DateTime 2022-12-09 13:59
  * @Desc
  */
-public class CglibDynamicProxyTest {
+public class CglibAopProxyTest {
 
     private AdvisedSupport advisedSupport;
 
