@@ -160,6 +160,10 @@ AopProxy是获取代理对象的抽象接口，JdkDynamicAopProxy是基于JDK动
 
 MethodInterceptor，方法拦截器，是AOP Alliance的"公民"，顾名思义，可以拦截方法，可在被代理执行的方法前后增加代理行为。
 
+## 基于CGLIB的动态代理
+> package:cglibdynamicproxy
+
+
 
 
 
