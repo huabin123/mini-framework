@@ -171,6 +171,9 @@ MethodInterceptor，方法拦截器，是AOP Alliance的"公民"，顾名思义�
 
 增加AOP代理工厂ProxyFactory，由AdvisedSupport#proxyTargetClass属性决定使用Jdk动态代理还是Cglib动态代理。
 
+## 几种常用的Advice：BeforeAdvice/AfterAdvice/AfterReturningAdvice/ThrowsAdvice...
+> package:commonadvice
+
 
 
 
