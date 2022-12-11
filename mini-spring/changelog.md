@@ -174,9 +174,15 @@ MethodInterceptor，方法拦截器，是AOP Alliance的"公民"，顾名思义�
 ## 几种常用的Advice：BeforeAdvice/AfterAdvice/AfterReturningAdvice/ThrowsAdvice...
 > package:commonadvice
 
+Spring将AOP联盟中的Advice细化出各种类型的Advice，常用的有BeforeAdvice/AfterAdvice/AfterReturningAdvice/ThrowsAdvice，我们可以通过扩展MethodInterceptor来实现。
 
+这里只简单实现BeforeAdvice，定义MethodBeforeAdviceInterceptor拦截器，在执行被代理方法之前，先执行BeforeAdvice的方法。
 
+## PointcutAdvisor：Pointcut和Advice的组合
+> package:pointcutadvisor
 
+Advisor是包含一个Pointcut和一个Advice的组合，Pointcut用于捕获JointPoint，Advice决定在JointPoint执行某种操作。实现了一个支持AspectJ表达式
+的AspectJExpressionPointcutAdvisor。
 
 
 
