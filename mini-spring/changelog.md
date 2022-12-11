@@ -184,7 +184,8 @@ Spring将AOP联盟中的Advice细化出各种类型的Advice，常用的有Befor
 Advisor是包含一个Pointcut和一个Advice的组合，Pointcut用于捕获JointPoint，Advice决定在JointPoint执行某种操作。实现了一个支持AspectJ表达式
 的AspectJExpressionPointcutAdvisor。
 
-
+## 动态代理融入bean生命周期
+> package:autoproxy
 
 
 
