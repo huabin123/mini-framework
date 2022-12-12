@@ -197,7 +197,13 @@ DefaultAdvisorAutoProxyCreator是处理横切逻辑的织入返回代理对象In
 
 ![](./assets/auto-proxy.png)
 
+## PropertyPlaceholderConfigure
+> package:propertyplaceholderconfigure
 
+经常需要将配置信息配置在properties文件中，然后在XML文件中以占位符的方式引用。
+
+实现思路很简单，在bean实例化之前，编辑BeanDefinition，解析XML文件中的占位符，然后用properties文件中的配置值替换占位符。
+而BeanFactoryPostProcessor具有编辑BeanDefinition的能力，因此PropertyPlaceholderConfigurer继承自BeanFactoryPostProcessor。
 
 
 
