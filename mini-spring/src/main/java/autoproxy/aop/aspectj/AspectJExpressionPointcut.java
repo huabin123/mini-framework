@@ -2,7 +2,7 @@ package autoproxy.aop.aspectj;
 
 import autoproxy.aop.ClassFilter;
 import autoproxy.aop.MethodMatcher;
-import autoproxy.aop.PointCut;
+import autoproxy.aop.Pointcut;
 import org.aspectj.weaver.tools.PointcutExpression;
 import org.aspectj.weaver.tools.PointcutParser;
 import org.aspectj.weaver.tools.PointcutPrimitive;
@@ -16,7 +16,7 @@ import java.util.Set;
  * @DateTime 2022-12-09 11:57
  * @Desc
  */
-public class AspectJExpressionPointcut implements ClassFilter, MethodMatcher, PointCut {
+public class AspectJExpressionPointcut implements ClassFilter, MethodMatcher, Pointcut {
 
     private static final Set<PointcutPrimitive> SUPPORTED_PRIMITIVES = new HashSet<PointcutPrimitive>();
 

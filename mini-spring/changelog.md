@@ -187,7 +187,15 @@ Advisor是包含一个Pointcut和一个Advice的组合，Pointcut用于捕获Joi
 ## 动态代理融入bean生命周期
 > package:autoproxy
 
+结合前面讲解的bean的生命周期，BeanPostProcessor处理阶段可以修改和替换bean，正好可以在此阶段返回代理对象替换原对象。不过我们引入一种特殊的
+BeanPostProcessor--InstantiationAwareBeanPostProcessor，如果InstantiationAwareBeanPostProcessor处理阶段返回代理对象，会导致
+短路，不会继续走原来的创建bean的流程，具体实现查看AbstractAutowireCapableBeanFactory#resolveBeforeInstantiation。
 
+DefaultAdvisorAutoProxyCreator是处理横切逻辑的织入返回代理对象InstantiationAwareBeanPostProcessor的实现类，当对象实例化时，生成代理对象并返回。
+
+至此，bean的生命周期如下：
+
+![](./assets/auto-proxy.png)
 
 
 

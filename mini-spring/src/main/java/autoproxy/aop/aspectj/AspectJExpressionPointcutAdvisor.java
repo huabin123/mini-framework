@@ -1,6 +1,6 @@
 package autoproxy.aop.aspectj;
 
-import autoproxy.aop.PointCut;
+import autoproxy.aop.Pointcut;
 import autoproxy.aop.PointcutAdvisor;
 import org.aopalliance.aop.Advice;
 
@@ -19,7 +19,6 @@ public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor {
 
     public void setExpression(String expression){
         this.expression = expression;
-        pointcut = new AspectJExpressionPointcut(expression);
     }
 
     @Override
@@ -32,7 +31,10 @@ public class AspectJExpressionPointcutAdvisor implements PointcutAdvisor {
     }
 
     @Override
-    public PointCut getPointcut() {
+    public Pointcut getPointcut() {
+        if (pointcut == null) {
+            pointcut = new AspectJExpressionPointcut(expression);
+        }
         return pointcut;
     }
 }
