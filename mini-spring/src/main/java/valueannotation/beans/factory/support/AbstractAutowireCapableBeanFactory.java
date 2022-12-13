@@ -5,6 +5,7 @@ import cn.hutool.core.util.ClassUtil;
 import cn.hutool.core.util.StrUtil;
 import valueannotation.beans.BeansException;
 import valueannotation.beans.PropertyValue;
+import valueannotation.beans.PropertyValues;
 import valueannotation.beans.factory.BeanFactoryAware;
 import valueannotation.beans.factory.DisposableBean;
 import valueannotation.beans.factory.InitializingBean;
@@ -68,6 +69,8 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         Object bean = null;
         try {
             bean = createBeanInstance(beanDefinition);
+            //在设置bean属性之前，允许BeanPostProcessor修改属性值
+            applyBeanPostprocessorsBeforeApplyingPropertyValues(beanName, bean, beanDefinition);
             // 【添加的功能点】为bean填充属性
             applyPropertyValues(beanName, bean, beanDefinition);
             //执行bean的初始化方法和BeanPostProcessor的前置和后置处理方法
@@ -127,6 +130,26 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
     protected Object createBeanInstance(BeanDefinition beanDefinition) {
         return getInstantiationStrategy().instantiate(beanDefinition);
+    }
+
+    /**
+     * 在设置bean属性之前，允许BeanPostProcessor修改属性值
+     *
+     * @param beanName
+     * @param bean
+     * @param beanDefinition
+     */
+    protected void applyBeanPostprocessorsBeforeApplyingPropertyValues(String beanName, Object bean, BeanDefinition beanDefinition) {
+        for (BeanPostProcessor beanPostProcessor : getBeanPostProcessors()) {
+            if (beanPostProcessor instanceof InstantiationAwareBeanPostProcessor) {
+                PropertyValues pvs = ((InstantiationAwareBeanPostProcessor) beanPostProcessor).postProcessPropertyValues(beanDefinition.getPropertyValues(), bean, beanName);
+                if (pvs != null) {
+                    for (PropertyValue propertyValue : pvs.getPropertyValues()) {
+                        beanDefinition.getPropertyValues().addPropertyValue(propertyValue);
+                    }
+                }
+            }
+        }
     }
 
     public InstantiationStrategy getInstantiationStrategy(){

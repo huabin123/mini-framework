@@ -1,6 +1,7 @@
 package valueannotation.beans.factory.config;
 
 import valueannotation.beans.factory.HierarchicalBeanFactory;
+import valueannotation.context.util.StringValueResolver;
 
 public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, SingletonBeanRegistry {
 
@@ -14,4 +15,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
      */
     void destroySingletons();
 
+    String resolveEmbeddedValue(String value);
+
+    void addEmbeddedValueResolver(StringValueResolver valueResolver);
 }

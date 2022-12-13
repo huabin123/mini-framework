@@ -1,5 +1,6 @@
 package valueannotation.bean;
 
+import valueannotation.beans.factory.annotation.Value;
 import valueannotation.stereotype.Component;
 
 /**
@@ -10,6 +11,7 @@ import valueannotation.stereotype.Component;
 @Component
 public class Car {
 
+	@Value("${brand}")
 	private String brand;
 
 	public String getBrand() {
