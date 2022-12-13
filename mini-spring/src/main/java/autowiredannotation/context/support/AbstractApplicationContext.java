@@ -1,5 +1,6 @@
 package autowiredannotation.context.support;
 
+import autowiredannotation.beans.BeansException;
 import autowiredannotation.beans.factory.ConfigurableListableBeanFactory;
 import autowiredannotation.beans.factory.config.BeanFactoryPostProcessor;
 import autowiredannotation.beans.factory.config.BeanPostProcessor;
@@ -105,6 +106,10 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
     @Override
     public Object getBean(String name) throws Exception {
         return getBeanFactory().getBean(name);
+    }
+
+    public <T> T getBean(Class<T> requiredType) throws BeansException {
+        return getBeanFactory().getBean(requiredType);
     }
 
     @Override

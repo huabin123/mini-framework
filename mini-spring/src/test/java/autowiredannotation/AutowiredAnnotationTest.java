@@ -1,5 +1,6 @@
 package autowiredannotation;
 
+import autowiredannotation.bean.Person;
 import autowiredannotation.context.support.ClassPathXmlApplicationContext;
 import org.junit.Test;
 
@@ -14,7 +15,10 @@ public class AutowiredAnnotationTest {
 
     @Test
     public void testAutowiredAnnotation() {
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:autowired-annotation.xml");
 
+        Person person = applicationContext.getBean(Person.class);
+        assertThat(person.getCar()).isNotNull();
     }
 
 }

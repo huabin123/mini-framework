@@ -1,8 +1,8 @@
 package autowiredannotation.aop.aspectj;
 
 import autowiredannotation.aop.Pointcut;
+import autowiredannotation.aop.PointcutAdvisor;
 import org.aopalliance.aop.Advice;
-import valueannotation.aop.PointcutAdvisor;
 
 /**
  * @Author huabin

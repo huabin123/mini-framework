@@ -2,17 +2,21 @@ package autowiredannotation.bean;
 
 import autowiredannotation.beans.factory.DisposableBean;
 import autowiredannotation.beans.factory.InitializingBean;
+import autowiredannotation.beans.factory.annotation.Autowired;
+import autowiredannotation.stereotype.Component;
 
 /**
  * @author derekyi
  * @date 2020/11/24
  */
+@Component
 public class Person implements InitializingBean, DisposableBean {
 
 	private String name;
 
 	private int age;
 
+	@Autowired
 	private Car car;
 
 	public String getName() {
