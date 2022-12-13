@@ -226,4 +226,5 @@ DefaultAdvisorAutoProxyCreator是处理横切逻辑的织入返回代理对象In
 
 @Autowired注解的处理见AutowiredAnnotationBeanPostProcessor#postProcessPropertyValues
 
-
+## bug fix：没有为代理bean设置属性
+> package:populateproxybeanwithpropertyvalues

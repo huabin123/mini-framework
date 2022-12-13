@@ -1,0 +1,8 @@
+package populateproxybeanwithpropertyvalues.context;
+
+import populateproxybeanwithpropertyvalues.beans.factory.HierarchicalBeanFactory;
+import populateproxybeanwithpropertyvalues.beans.factory.ListableBeanFactory;
+import populateproxybeanwithpropertyvalues.core.io.ResourceLoader;
+
+public interface ApplicationContext extends ListableBeanFactory, HierarchicalBeanFactory, ResourceLoader {
+}
