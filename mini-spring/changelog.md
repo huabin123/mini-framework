@@ -214,5 +214,8 @@ DefaultAdvisorAutoProxyCreator是处理横切逻辑的织入返回代理对象In
 
 在ClassPathBeanDefinitionScanner#doScan中扫描类并组装BeanDefinition然后注册到容器中。
 
+## @Value注解
+> package:valueannotation
+
 
 
