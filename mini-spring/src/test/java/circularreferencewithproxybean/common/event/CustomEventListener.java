@@ -1,6 +1,6 @@
 package circularreferencewithproxybean.common.event;
 
-import circularreferencewithoutproxybean.context.ApplicationListener;
+import circularreferencewithproxybean.context.ApplicationListener;
 
 /**
  * @author derekyi

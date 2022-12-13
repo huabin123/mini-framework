@@ -1,7 +1,7 @@
 package circularreferencewithproxybean.common.event;
 
-import circularreferencewithoutproxybean.context.ApplicationListener;
-import circularreferencewithoutproxybean.context.event.ContextClosedEvent;
+import circularreferencewithproxybean.context.ApplicationListener;
+import circularreferencewithproxybean.context.event.ContextClosedEvent;
 
 /**
  * @author derekyi

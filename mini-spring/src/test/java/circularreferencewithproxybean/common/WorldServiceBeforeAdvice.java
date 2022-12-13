@@ -1,6 +1,6 @@
 package circularreferencewithproxybean.common;
 
-import circularreferencewithoutproxybean.aop.MethodBeforeAdvice;
+import circularreferencewithproxybean.aop.MethodBeforeAdvice;
 
 import java.lang.reflect.Method;
 

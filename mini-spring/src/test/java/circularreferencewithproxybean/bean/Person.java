@@ -1,9 +1,9 @@
 package circularreferencewithproxybean.bean;
 
-import circularreferencewithoutproxybean.beans.factory.DisposableBean;
-import circularreferencewithoutproxybean.beans.factory.InitializingBean;
-import circularreferencewithoutproxybean.beans.factory.annotation.Autowired;
-import circularreferencewithoutproxybean.stereotype.Component;
+import circularreferencewithproxybean.beans.factory.DisposableBean;
+import circularreferencewithproxybean.beans.factory.InitializingBean;
+import circularreferencewithproxybean.beans.factory.annotation.Autowired;
+import circularreferencewithproxybean.stereotype.Component;
 
 /**
  * @author derekyi

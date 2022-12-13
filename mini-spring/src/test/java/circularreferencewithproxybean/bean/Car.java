@@ -1,7 +1,7 @@
 package circularreferencewithproxybean.bean;
 
-import circularreferencewithoutproxybean.beans.factory.annotation.Value;
-import circularreferencewithoutproxybean.stereotype.Component;
+import circularreferencewithproxybean.beans.factory.annotation.Value;
+import circularreferencewithproxybean.stereotype.Component;
 
 /**
  * @author derekyi

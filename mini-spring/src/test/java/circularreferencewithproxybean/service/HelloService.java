@@ -1,10 +1,10 @@
 package circularreferencewithproxybean.service;
 
-import circularreferencewithoutproxybean.beans.BeansException;
-import circularreferencewithoutproxybean.beans.factory.BeanFactory;
-import circularreferencewithoutproxybean.beans.factory.BeanFactoryAware;
-import circularreferencewithoutproxybean.context.ApplicationContext;
-import circularreferencewithoutproxybean.context.ApplicationContextAware;
+import circularreferencewithproxybean.beans.BeansException;
+import circularreferencewithproxybean.beans.factory.BeanFactory;
+import circularreferencewithproxybean.beans.factory.BeanFactoryAware;
+import circularreferencewithproxybean.context.ApplicationContext;
+import circularreferencewithproxybean.context.ApplicationContextAware;
 
 /**
  * @author derekyi

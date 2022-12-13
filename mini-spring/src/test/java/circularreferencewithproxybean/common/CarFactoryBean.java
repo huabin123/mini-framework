@@ -1,6 +1,6 @@
 package circularreferencewithproxybean.common;
 
-import circularreferencewithoutproxybean.beans.factory.FactoryBean;
+import circularreferencewithproxybean.beans.factory.FactoryBean;
 import circularreferencewithproxybean.bean.Car;
 
 /**

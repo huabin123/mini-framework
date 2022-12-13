@@ -6,6 +6,7 @@ import circularreferencewithproxybean.beans.PropertyValues;
 import circularreferencewithproxybean.beans.factory.BeanFactoryAware;
 import circularreferencewithproxybean.beans.factory.DisposableBean;
 import circularreferencewithproxybean.beans.factory.InitializingBean;
+import circularreferencewithproxybean.beans.factory.ObjectFactory;
 import circularreferencewithproxybean.beans.factory.config.*;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ClassUtil;
@@ -72,7 +73,13 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
             //为解决循环依赖问题，将实例化后的bean放进缓存中提前暴露
             if (beanDefinition.isSingleton()) {
-                earlySingletonObjects.put(beanName, bean);
+                Object finalBean = bean;
+                addSingletonFactory(beanName, new ObjectFactory<Object>() {
+                    @Override
+                    public Object getObject() throws BeansException {
+                        return getEarlyBeanReference(beanName, beanDefinition, finalBean);
+                    }
+                });
             }
 
             //实例化bean之后执行
@@ -100,6 +107,24 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
             addSingleton(beanName, bean);
         }
         return bean;
+    }
+
+    protected void addSingletonFactory(String beanName, ObjectFactory<?> singletonFactory) {
+        singletonFactories.put(beanName, singletonFactory);
+    }
+
+    protected Object getEarlyBeanReference(String beanName, BeanDefinition beanDefinition, Object bean) {
+        Object exposedObject = bean;
+        for (BeanPostProcessor bp : getBeanPostProcessors()) {
+            if (bp instanceof InstantiationAwareBeanPostProcessor) {
+                exposedObject = ((InstantiationAwareBeanPostProcessor) bp).getEarlyBeanReference(exposedObject, beanName);
+                if (exposedObject == null) {
+                    return exposedObject;
+                }
+            }
+        }
+
+        return exposedObject;
     }
 
     /**

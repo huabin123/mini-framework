@@ -1,10 +1,10 @@
 package circularreferencewithproxybean.common;
 
-import circularreferencewithoutproxybean.beans.PropertyValue;
-import circularreferencewithoutproxybean.beans.PropertyValues;
-import circularreferencewithoutproxybean.beans.factory.ConfigurableListableBeanFactory;
-import circularreferencewithoutproxybean.beans.factory.config.BeanDefinition;
-import circularreferencewithoutproxybean.beans.factory.config.BeanFactoryPostProcessor;
+import circularreferencewithproxybean.beans.PropertyValue;
+import circularreferencewithproxybean.beans.PropertyValues;
+import circularreferencewithproxybean.beans.factory.ConfigurableListableBeanFactory;
+import circularreferencewithproxybean.beans.factory.config.BeanDefinition;
+import circularreferencewithproxybean.beans.factory.config.BeanFactoryPostProcessor;
 
 /**
  * @Author huabin

@@ -1,7 +1,7 @@
 package circularreferencewithproxybean.common;
 
-import circularreferencewithoutproxybean.beans.BeansException;
-import circularreferencewithoutproxybean.beans.factory.config.BeanPostProcessor;
+import circularreferencewithproxybean.beans.BeansException;
+import circularreferencewithproxybean.beans.factory.config.BeanPostProcessor;
 import circularreferencewithproxybean.bean.Car;
 
 /**

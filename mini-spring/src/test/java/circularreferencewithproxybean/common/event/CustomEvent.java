@@ -1,8 +1,8 @@
 package circularreferencewithproxybean.common.event;
 
 
-import circularreferencewithoutproxybean.context.ApplicationContext;
-import circularreferencewithoutproxybean.context.event.ApplicationContextEvent;
+import circularreferencewithproxybean.context.ApplicationContext;
+import circularreferencewithproxybean.context.event.ApplicationContextEvent;
 
 /**
  * @author derekyi
