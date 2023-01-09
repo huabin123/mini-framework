@@ -4,7 +4,48 @@
 
 > package:simplebeancontainer
 
-定义了一个简单的bena容器，并且只有注册和获取bean的方法。
+定义了一个简单的bean容器，并且只有注册和获取bean的方法。
+
+定义了一个简单的bean容器，并且只有注册和获取bean的方法。
+
+```java
+public class BeanFactory {
+
+    private Map<String, Object> beanMap = new HashMap<String, Object>();  // 容器
+
+    public void registerBean(String name, Object bean){
+        beanMap.put(name, bean);
+    }
+
+    public Object getBean(String name){
+        return beanMap.get(name);
+    }
+}
+```
+
+测试：
+
+```java
+public class SimpleBeanContainerTest {
+
+    @Test
+    public void testGetBean(){
+        BeanFactory beanFactory = new BeanFactory();
+        beanFactory.registerBean("hello", new HelloService());
+        HelloService hello = (HelloService) beanFactory.getBean("hello");
+        assertThat(hello).isNotNull();
+        assertThat(hello.sayHello()).isEqualTo("hello");
+    }
+
+    class HelloService{
+        public String sayHello(){
+            System.out.println("hello");
+            return "hello";
+        }
+    }
+
+}
+```
 
 ## BeanDefinition和BeanDefinitionRegistry
 
